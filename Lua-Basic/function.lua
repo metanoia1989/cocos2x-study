@@ -56,3 +56,37 @@ end
 local c1 = newCounter()
 print('计时器一次', c1())
 print('计时器二次', c1())
+
+
+local g = function (x) return math.sin(x) end
+
+-- 调用函数的几种方式
+local f = function (s) 
+    if type(s) == 'string' then
+        print(s) 
+    elseif type(s) == 'table' then
+        local result = ''
+        for k, v in pairs(s) do
+            result = result .. k .. ' = ' .. v .. ', '
+        end
+        -- 去掉最后一个逗号
+        result = result:sub(1, -3)
+        print(result)
+    else
+        print('s is not a string or table')
+    end
+end
+f('hello f')
+f "hello f"
+f 'hello f'
+f [[hello f]]
+f {x = 10, y = 20}
+
+local x = {
+    name = 'table_x',
+}
+x.move = function (x, a, b)
+    print('move', x.name, a, b)
+end
+x:move(10, 20)  -- 等同于 x.move(x, 10, 20)
+-- 调用静态方法的快捷方式，尤其定义.move，并且第一个参数为自身  
