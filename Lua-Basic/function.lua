@@ -90,3 +90,30 @@ x.move = function (x, a, b)
 end
 x:move(10, 20)  -- 等同于 x.move(x, 10, 20)
 -- 调用静态方法的快捷方式，尤其定义.move，并且第一个参数为自身  
+
+
+print('===========================================')
+print('函数默认参数')
+-- 函数默认参数
+-- lua 不支持默认参数，如果参数没有传递，则值为nil
+function func(x, y, z)
+    if not y then y = 0 end
+    if not z then z = 0 end
+    print("x, y, z", x, y, z)
+end
+func(1, 2, 3)
+func(1, 2)
+func(1)
+func()
+
+-- 也可以使用 or 来设置默认参数
+function func2(x, y, z)
+    y = y or 0
+    z = z or 0
+    print("x, y, z", x, y, z)
+end
+func2(1, 2, 3)
+func2(1, 2)
+func2(1)
+func2()
+print('===========================================')
