@@ -8,3 +8,6 @@ end
 
 package.path = package.path .. ";src/?.lua;src/framework/protobuf/?.lua"
 require("app.MyApp").new():run()
+
+
+print("测试")
