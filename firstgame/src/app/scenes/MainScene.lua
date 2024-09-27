@@ -53,6 +53,17 @@ function MainScene:ctor()
                 self.router.navigateTo("TransitionScene")
             end
         end)
+
+    ccui.Button:create()
+        :setTitleText("Action 动作示例")
+        :setTitleFontSize(30) 
+        :setPosition(display.cx, display.height - 310)
+        :addTo(self)
+        :addTouchEventListener(function(ref, eventType)
+            if eventType == cc.EventCode.ENDED then
+                self.router.navigateTo("ActionScene")
+            end
+        end)
 end
 
 function MainScene:onEnter()
