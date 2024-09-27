@@ -26,4 +26,11 @@ function BaseScene:addBackButton()
         end)
 end
 
+function BaseScene:onEnter()
+end
+
+function BaseScene:onExit()
+end
+
+
 return BaseScene

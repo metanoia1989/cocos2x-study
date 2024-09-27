@@ -32,7 +32,27 @@ function MainScene:ctor()
             end
         end)
 
+    ccui.Button:create()
+        :setTitleText("Scheduler 定时器示例")
+        :setTitleFontSize(30) 
+        :setPosition(display.cx, display.height - 230)
+        :addTo(self)
+        :addTouchEventListener(function(ref, eventType)
+            if eventType == cc.EventCode.ENDED then
+                self.router.navigateTo("SchedulerScene")
+            end
+        end)
 
+    ccui.Button:create()
+        :setTitleText("Transition 场景转换示例")
+        :setTitleFontSize(30) 
+        :setPosition(display.cx, display.height - 270)
+        :addTo(self)
+        :addTouchEventListener(function(ref, eventType)
+            if eventType == cc.EventCode.ENDED then
+                self.router.navigateTo("TransitionScene")
+            end
+        end)
 end
 
 function MainScene:onEnter()

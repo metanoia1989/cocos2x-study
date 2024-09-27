@@ -51,6 +51,37 @@ function ButtonScene:ctor()
             print("图片按钮触摸取消")
         end
     end)
+
+    -- checkbox 
+    --[[
+    ccui.CheckBox:create(
+        backGround, 图片状态下显示的背景图片(可选)。
+        backGroundSelected, 按下状态下显示的背景图片(可选)。
+        cross, 勾选图片图片状态(可选)。
+        backGroundDisabled, 禁用状态下显示的背景图片(可 选)。
+        frontCrossDisabled, 勾选图片禁用状态(可选)。 
+        textType 图片来源，0从文件，1从精灵帧缓存(可选)    
+    )
+    ]]
+    local checkboxBtn = ccui.CheckBox:create(
+            "button/btn_n.png", 
+            "button/btn_p.png", 
+            "button/checkbox_on.png", 
+            "button/btn_d.png", 
+            "button/checkbox_off.png", 
+            0)
+        :addTo(self)
+        :pos(display.cx, display.cy + 200)
+    checkboxBtn:setSelected(true)
+    -- checkboxBtn:setEnabled(false)
+    checkboxBtn:addTouchEventListener(function(ref, eventType)
+        if eventType == ccui.CheckBoxEventType.selected then
+            print("checkbox 选中")
+        elseif eventType == ccui.CheckBoxEventType.unselected then
+            print("checkbox 未选中")
+        end
+    end)
+    
 end
 
 return ButtonScene

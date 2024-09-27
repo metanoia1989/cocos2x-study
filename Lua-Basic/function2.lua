@@ -55,3 +55,21 @@ end
 
 t:func(10, 20) -- 等价于 t.func(t, 10, 20)，算是一种语法糖 
 
+
+print('===========================================')
+print('测试函数内部是否能够访问外部local变量')
+local scheduler = {}
+function scheduler:scheduleScriptFunc(callback, dt)
+    callback(dt)
+    return 'schedulerID: xxx_xxx'
+end
+function scheduler:unscheduleScriptEntry(schedulerID)
+    print("unscheduleScriptEntry", schedulerID)
+end
+
+-- 立即执行，访问不到函数返回的变量 
+local schedulerID = scheduler:scheduleScriptFunc(function(dt)
+    scheduler:unscheduleScriptEntry(schedulerID)
+    print("一次性定时器", dt)
+end, 3.0)
+print('===========================================')
