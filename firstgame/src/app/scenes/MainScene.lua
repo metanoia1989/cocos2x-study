@@ -64,6 +64,28 @@ function MainScene:ctor()
                 self.router.navigateTo("ActionScene")
             end
         end)
+
+    ccui.Button:create()
+        :setTitleText("Scheduler2 调度器示例")
+        :setTitleFontSize(30) 
+        :setPosition(display.cx, display.height - 350)
+        :addTo(self)
+        :addTouchEventListener(function(ref, eventType)
+            if eventType == cc.EventCode.ENDED then
+                self.router.navigateTo("Scheduler2Scene")
+            end
+        end)
+
+    ccui.Button:create()
+        :setTitleText("Event 事件分发机制")
+        :setTitleFontSize(30) 
+        :setPosition(display.cx, display.height - 390)
+        :addTo(self)
+        :addTouchEventListener(function(ref, eventType)
+            if eventType == cc.EventCode.ENDED then
+                self.router.navigateTo("EventScene")
+            end
+        end)
 end
 
 function MainScene:onEnter()
