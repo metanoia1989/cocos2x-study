@@ -23,13 +23,12 @@ function FruitItem:setActive(active)
     local frame
     if active then
         frame = display.newSpriteFrame("fruit" .. self.fruitIndex .. "_2.png")
-        print("name: ".. "fruit".. self.fruitIndex .. "_2.png")
     else
         frame = display.newSpriteFrame("fruit" .. self.fruitIndex .. "_1.png")
-        print("name: ".. "fruit".. self.fruitIndex .. "_1.png")
     end
-    print("更新精灵的显示帧", frame, self.isActive, self.fruitIndex)
-    self:setDisplayFrame(frame) -- 更新精灵的显示帧
+    self:setSpriteFrame(frame) -- 更新精灵的显示帧
+    -- 妈的我敲成 setDisplayFrame，然后一直报错，拷贝原本的代码才发现问题
+    -- 这种问题，AI也很难发现   
 
     -- 正常图片切换为高亮图片时，播放一组动作 
     if active then

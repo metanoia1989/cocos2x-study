@@ -55,6 +55,19 @@ function PlayScene:initUI()
     })
     :align(display.CENTER, display.cx + 105, display.top - 24)
     :addTo(self)
+
+    display.newSprite("#score_now.png")
+    :align(display.CENTER, display.cx, display.top - 150)
+    :addTo(self)
+
+    -- 当前分数
+    self.currentScoreLabel = display.newBMFontLabel({
+        text = tostring(self.curSorce),
+        font = "font/earth48.fnt",
+    })
+    :align(display.CENTER, display.cx, display.top - 150)
+    :addTo(self)
+
         
     -- 显示消除可得分数 
     self.activeScoreLabel = display.newTTFLabel({
@@ -149,14 +162,14 @@ function PlayScene:activeNeighbor(fruit)
             self:activeNeighbor(rightFruit)
         end
     end
-    if fruit.y - 1 >= 1 then
-        local upFruit = self.matrix[(fruit.y-1) * self.xCount + fruit.x]
+    if fruit.y + 1 <= self.yCount then
+        local upFruit = self.matrix[fruit.y * self.xCount + fruit.x]
         if upFruit.fruitIndex == fruit.fruitIndex and upFruit.isActive == false then
             self:activeNeighbor(upFruit)
         end
     end
-    if fruit.y + 1 <= self.yCount then
-        local downFruit = self.matrix[(fruit.y-1) * self.xCount + fruit.x]
+    if fruit.y - 1 >= 1 then
+        local downFruit = self.matrix[(fruit.y-2) * self.xCount + fruit.x]
         if downFruit.fruitIndex == fruit.fruitIndex and downFruit.isActive == false then
             self:activeNeighbor(downFruit)
         end
