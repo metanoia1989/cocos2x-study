@@ -11,3 +11,13 @@
 * 玩家生命值耗尽后游戏结束。
 * 敌人生命值耗尽后玩家可进入下一个房间继续挑战。
 
+
+
+# 动画事件
+* Animation.EventType.PLAY    在开始播放时触发回调
+* Animation.EventType.STOP    在停止播放时触发回调
+* Animation.EventType.PAUSE   在暂停播放时触发回调
+* Animation.EventType.RESUME  在恢复播放时触发回调
+* Animation.EventType.LASTFRAME   假如动画循环次数大于1，在动画播放到最后一帧时触发回调
+* Animation.EventType.FINISHED    在动画结束播放时触发回调
+
